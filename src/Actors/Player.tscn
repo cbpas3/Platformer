@@ -1,10 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 46 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 48, 40 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 10
@@ -20,5 +23,18 @@ position = Vector2( 0, -46 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 0, -448 )
+position = Vector2( 0, -200 )
 current = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+modulate = Color( 1, 0, 0, 1 )
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2( 0, -40 )
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_area_entered"]
+[connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
