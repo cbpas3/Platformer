@@ -6,13 +6,14 @@ func _ready() -> void:
 	_velocity.x = -speed.x
 
 func _physics_process(delta: float) -> void:
-	_velocity.y += gravity + delta
+	
+	
+	var snap:= Vector2.DOWN * 65
+	
 	if is_on_wall():
-		_velocity.x *= -1.0
-		
-	# Reset the vertical velocity because
-	# _velocity.y += gravity + delta accumulates even after it hits the ground
-	_velocity.y = move_and_slide(_velocity, up_direction).y
+		_velocity.x *= -1
+	_velocity.y += gravity * delta
+	_velocity.y = move_and_slide_with_snap(_velocity,snap, up_direction,true,4,PI/3).y
 
 
 func _on_StompDetector_body_entered(body: PhysicsBody2D) -> void:

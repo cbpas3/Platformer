@@ -1,7 +1,7 @@
 extends Actor
 
 export var stomp_impulse: = 1000.0 #per second
-
+export var bumper_impulse: = 2000.0 #per second
 
 func _on_EnemyDetector_area_entered(area: Area2D) -> void:
 	# bounce off enemy
@@ -18,7 +18,18 @@ func _physics_process(delta: float) -> void:
 	# Reset the player's vertical velocity
 	# Is needed because of out.y += gravity * get_physics_process_delta_time()
 	# Velocity keeps accumulating even after they hit the floor
-	_velocity = move_and_slide(_velocity, up_direction)
+	
+	# if the character is not jumping, stick to the ground
+	var snap:= Vector2.DOWN * 80.0 if is_equal_approx(direction.y, 1.0) else Vector2.ZERO
+	# fourth parameter is stop on slope
+	_velocity.y = move_and_slide_with_snap(
+		_velocity,
+		snap,
+		up_direction,
+		true,
+		4,
+		PI / 4.0
+		).y
 	
 func get_direction() -> Vector2:
 	return Vector2(
@@ -50,6 +61,11 @@ func calculate_stomp_velocity(linear_velocity: Vector2, impulse: float) -> Vecto
 	var out: = linear_velocity
 	out.y = -impulse
 	return out
+	
 
 
 
+
+
+func _on_BumperDetector_area_entered(area: Area2D) -> void:
+	_velocity = calculate_stomp_velocity(_velocity,bumper_impulse)
