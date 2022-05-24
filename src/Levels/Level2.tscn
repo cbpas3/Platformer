@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://src/Actors/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/light.png" type="Texture" id=4]
+[ext_resource path="res://assets/background.png" type="Texture" id=5]
+[ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=6]
+
+[node name="LevelTemplate" type="Node2D"]
+__meta__ = {
+"_edit_horizontal_guides_": [ -1471.0 ],
+"_edit_vertical_guides_": [ 4160.0 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+texture = ExtResource( 5 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 80, 80 )
+cell_custom_transform = Transform2D( 80, 0, 0, 80, 0, 0 )
+collision_layer = 8
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -851917, 0, 0, -786383, 0, 0, -786382, 0, 0, -786381, 0, 0, -720849, 0, 0, -720848, 0, 0, -720847, 0, 0, -655316, 0, 0, -655315, 0, 0, -655314, 0, 0, -655313, 0, 0, -589782, 0, 0, -589781, 0, 0, -589780, 0, 0, -524248, 0, 0, -524247, 0, 0, -524246, 0, 0, -458714, 0, 0, -458713, 0, 0, -393179, 0, 0, -393178, 0, 0, -327645, 0, 0, -327644, 0, 0, -262110, 0, 0, -262109, 0, 0, -196575, 0, 0, -196574, 0, 0, -131040, 0, 0, -131039, 0, 0, -65505, 0, 0, -65504, 0, 0, 0, 0, 0, 30, 0, 0, 31, 0, 0, 65536, 0, 0, 65565, 0, 0, 65566, 0, 0, 131072, 0, 0, 131100, 0, 0, 131101, 0, 0, 196608, 0, 0, 196635, 0, 0, 262144, 0, 0, 262169, 0, 0, 262170, 0, 0, 327680, 0, 0, 327704, 0, 0, 327705, 0, 0, 393216, 0, 0, 393239, 0, 0, 393240, 0, 0, 458752, 0, 0, 458759, -1610612736, 0, 458766, -1610612736, 0, 458774, 0, 0, 458775, 0, 0, 524288, 0, 0, 524296, -1610612736, 0, 524297, -1610612736, 0, 524301, -1610612736, 0, 524309, 0, 0, 524310, 0, 0, 589824, 0, 0, 589834, -1610612736, 0, 589835, -1610612736, 0, 589836, -1610612736, 0, 589844, 0, 0, 589845, 0, 0, 655360, 0, 0, 655378, 0, 0, 655379, 0, 0, 655380, 0, 0, 720896, 0, 0, 720913, 0, 0, 720914, 0, 0, 786432, 0, 0, 786448, 0, 0, 786449, 0, 0, 851968, 0, 0, 851969, 0, 0, 851970, 0, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 0, 0, 851977, 0, 0, 851978, 0, 0, 851979, 0, 0, 851980, 0, 0, 851981, 0, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 1966142, 0, 0, 1966143, 0, 0, 2031678, 0, 0, 2097214, 0, 0, 2162739, 0, 0, 2162740, 0, 0, 2162741, 0, 0, 2162742, 0, 0, 2162743, 0, 0, 2162744, 0, 0, 2162750, 0, 0, 2228263, 0, 0, 2228264, 0, 0, 2228265, 0, 0, 2228266, 0, 0, 2228267, 0, 0, 2228268, 0, 0, 2228269, 0, 0, 2228270, 0, 0, 2228271, 0, 0, 2228272, 0, 0, 2228273, 0, 0, 2228274, 0, 0, 2228275, 0, 0, 2228281, 0, 0, 2228282, 0, 0, 2228283, 0, 0, 2228284, 0, 0, 2228285, 0, 0, 2228286, 0, 0, 2293760, 0, 0, 2293761, 0, 0, 2293762, 0, 0, 2293763, 0, 0, 2293764, 0, 0, 2293765, 0, 0, 2293766, 0, 0, 2293767, 0, 0, 2293768, 0, 0, 2293769, 0, 0, 2293770, 0, 0, 2293771, 0, 0, 2293791, 0, 0, 2293792, 0, 0, 2293793, 0, 0, 2293794, 0, 0, 2293795, 0, 0, 2293796, 0, 0, 2293797, 0, 0, 2293798, 0, 0, 2293799, 0, 0, 2359307, 0, 0, 2359308, 0, 0, 2359309, 0, 0, 2359310, 0, 0, 2359311, 0, 0, 2359312, 0, 0, 2359313, 0, 0, 2359314, 0, 0, 2359315, 0, 0, 2359316, 0, 0, 2359317, 0, 0, 2359318, 0, 0, 2359319, 0, 0, 2359320, 0, 0, 2359321, 0, 0, 2359322, 0, 0, 2359323, 0, 0, 2359324, 0, 0, 2359325, 0, 0, 2359326, 0, 0 )
+
+[node name="Coin" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 468, 703 )
+
+[node name="Coin2" parent="TileMap" instance=ExtResource( 6 )]
+position = Vector2( 808, 897 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 2532, -264 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 3792, -959 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 1691, 526 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 292, 892 )
+collision_mask = 12
+
+[node name="Camera2D" parent="Player" index="2"]
+limit_top = -1471
+limit_right = 4160
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 965, 378 )
+texture = ExtResource( 4 )
+texture_scale = 3.0
+energy = 2.13
+range_layer_min = -100
+shadow_enabled = true
+shadow_gradient_length = 2.0
+shadow_filter = 2
+shadow_filter_smooth = 3.0
+
+[editable path="Player"]

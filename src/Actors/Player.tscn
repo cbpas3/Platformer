@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( -24, -48, -16, -48, 8, -48, 32, -48, 41, -44, 45, -39, 48, -32, 48, 31, 47, 36, 45, 40, 42, 44, 37, 47, 33, 49, -33, 49, -39, 46, -42, 42, -44, 38, -47, 32, -48, -33, -45, -39, -43, -42, -40, -44, -36, -47, -30, -48 )
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 40, 46 )
@@ -20,6 +23,9 @@ speed = Vector2( 800, 1000 )
 [node name="Player" type="Sprite" parent="."]
 position = Vector2( 0, -48 )
 texture = ExtResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Player"]
+occluder = SubResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -46 )
